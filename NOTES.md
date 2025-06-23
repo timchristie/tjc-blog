@@ -2,6 +2,9 @@
 	- Baseline workshop deploy page
 	- Build fails (can see from messier commits on https://github.com/timchristie/invoice-maker/actions/workflows/build-lint.yml) 
 	- Solution: update serverless to 3.40.
+	- Update gitignore to ignore node_modules
+
+
 
 2) Run locally
 
