@@ -21,5 +21,6 @@
 4) Add Bonus Cases
 	- Simple client side filtering based on if a string is within the contents or title
         - Deploy to AWS
+		- Issues with the post pathing, as some routes are private and some are public . Tried to get too fancy with authorizing on the endpoint yml, rather than just opening the endpoints and authenticating via the app itself. 
         - Like and comment pills are added but currently non-functional. likes and comments are just arrays of strings in the Post object.
 
