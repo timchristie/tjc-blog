@@ -1,10 +1,11 @@
-ApiPost:
+# Admin-only endpoints (require authentication)
+ApiPostAdmin:
   handler: src/baseblocks/post/post-api.handler
   events:
     - http:
-        path: /post/{any+}
-        method: ANY
-        authorizer: # https://www.serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-aws_iam-authorizers
+        path: /post
+        method: POST
+        authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
             Ref: ApiGatewayAuthorizer
@@ -20,8 +21,8 @@ ApiPost:
           allowCredentials: false
     - http:
         path: /post
-        method: ANY
-        authorizer: # https://www.serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-aws_iam-authorizers
+        method: PATCH
+        authorizer:
           type: COGNITO_USER_POOLS
           authorizerId:
             Ref: ApiGatewayAuthorizer
@@ -31,6 +32,52 @@ ApiPost:
             - Content-Type
             - X-Amz-Date
             - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Amz-User-Agent
+          allowCredentials: false
+    - http:
+        path: /post/{postId}
+        method: DELETE
+        authorizer:
+          type: COGNITO_USER_POOLS
+          authorizerId:
+            Ref: ApiGatewayAuthorizer
+        cors:
+          origin: ${self:custom.apiCorsOrigin}
+          headers:
+            - Content-Type
+            - X-Amz-Date
+            - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Amz-User-Agent
+          allowCredentials: false
+
+# Public endpoints (no authentication required)
+ApiPostPublic:
+  handler: src/baseblocks/post/post-api.handler
+  events:
+    - http:
+        path: /post/list
+        method: GET
+        cors:
+          origin: ${self:custom.apiCorsOrigin}
+          headers:
+            - Content-Type
+            - X-Amz-Date
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Amz-User-Agent
+          allowCredentials: false
+    - http:
+        path: /post/{postId}
+        method: GET
+        cors:
+          origin: ${self:custom.apiCorsOrigin}
+          headers:
+            - Content-Type
+            - X-Amz-Date
             - X-Api-Key
             - X-Amz-Security-Token
             - X-Amz-User-Agent
