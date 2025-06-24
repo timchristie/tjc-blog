@@ -9,7 +9,6 @@ import createAuthenticatedHandler from '../../util/create-authenticated-handler'
 import { postService } from './post.service';
 
 const app = createApp();
-// app.use(isAdmin); // All private endpoints require the user to be an admin
 export const handler = createAuthenticatedHandler(app);
 
 app.post('/post', [
@@ -67,7 +66,6 @@ app.delete('/post/:postId', [
     }
   },
 ]);
-
 
 app.get('/post/list', [
   async (req: RequestContext, res: Response) => {
