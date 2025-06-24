@@ -1,5 +1,4 @@
-# Admin-only endpoints (require authentication)
-ApiPostAdmin:
+ApiPost:
   handler: src/baseblocks/post/post-api.handler
   events:
     - http:
@@ -53,25 +52,8 @@ ApiPostAdmin:
             - X-Amz-Security-Token
             - X-Amz-User-Agent
           allowCredentials: false
-
-# Public endpoints (no authentication required)
-ApiPostPublic:
-  handler: src/baseblocks/post/post-api.handler
-  events:
     - http:
-        path: /post/list
-        method: GET
-        cors:
-          origin: ${self:custom.apiCorsOrigin}
-          headers:
-            - Content-Type
-            - X-Amz-Date
-            - X-Api-Key
-            - X-Amz-Security-Token
-            - X-Amz-User-Agent
-          allowCredentials: false
-    - http:
-        path: /post/{postId}
+        path: /post/{any+}
         method: GET
         cors:
           origin: ${self:custom.apiCorsOrigin}
