@@ -6,7 +6,7 @@ interface Props {
   posts: Post[];
 }
 
-const WebPostList = (props: Props, anonId: string): JSX.Element => {
+const WebPostList = (props: Props): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const posts = props.posts;
@@ -19,7 +19,7 @@ const WebPostList = (props: Props, anonId: string): JSX.Element => {
     <div className={styles.postList}>
       <div className={styles.list}>
         <div className={styles.header}>
-          <div className={styles.userCount}>Welcome to the blog! There {posts.length === 1 ? 'is' : 'are'} {posts.length} post{posts.length === 1 ? '' : 's'} here. You've filtered down to {filteredPosts.length} post{filteredPosts.length === 1 ? '' : 's'}.</div>
+          <div className={styles.userCount}>Welcome to the blog! There {posts.length === 1 ? 'is' : 'are'} {posts.length} post{posts.length === 1 ? '' : 's'} here. You&apos;ve filtered down to {filteredPosts.length} post{filteredPosts.length === 1 ? '' : 's'}.</div>
           <input type="text" placeholder="Search posts" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
       {filteredPosts.map((post) => (
