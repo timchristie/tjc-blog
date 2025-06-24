@@ -7,7 +7,7 @@ const DashboardContent = (): JSX.Element => {
       <h1>Dashboard</h1>
       <div className={styles.grid}>
         <div className={styles.preview}>
-          <h2>Tjc Blog</h2>
+        <h3><img src="/icons/post.svg" alt="Posts" /> Add a new post</h3>
         </div>
       </div>
     </div>
