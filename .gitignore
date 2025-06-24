@@ -1,2 +1,8 @@
 **/node_modules
 *.swp
+packages/admin/.dist
+packages/web/.dist
+packages/admin/.serverless
+packages/api/.serverless
+packages/web/.serverless
+packages/api/.esbuild/.serverless

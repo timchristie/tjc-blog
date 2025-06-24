@@ -91,8 +91,6 @@ provider:
           Resource:
             - !Sub ${adminTable.Arn}
             - !Sub ${adminTable.Arn}/index/*
-            - !Sub ${postsTable.Arn}
-            - !Sub ${postsTable.Arn}/index/*
             - !Sub ${postTable.Arn}
             - !Sub ${postTable.Arn}/index/*
         - Effect: Allow
